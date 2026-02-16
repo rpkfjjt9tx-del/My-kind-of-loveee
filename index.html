@@ -31,6 +31,9 @@
         #player-wrapper { position: absolute; top: -1000px; visibility: hidden; }
         #voice-btn { display: none; background: #800f2f; margin-top: 20px; animation: pulse 1.5s infinite; }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        
+        /* ரகசிய பட்டன் ஸ்டைல் */
+        #secret-eye { position: fixed; bottom: 0; right: 0; width: 40px; height: 40px; background: transparent; border: none; cursor: default; z-index: 9999; }
     </style>
 </head>
 <body>
@@ -54,8 +57,6 @@
         </div>
 
         <button id="music-btn" onclick="playMusic()">🎵 Play Our Song ❤️</button>
-        <p style="font-size: 13px;">(Click each box to reveal our memories 📸)</p>
-
         <div class="grid">
             <div class="memory-box" onclick="reveal(this, 'The day my heart chose you. ❤️')"><span>1</span><img src="1.JPG"><div class="memory-text"></div></div>
             <div class="memory-box" onclick="reveal(this, 'Our beautiful first date. ✨')"><span>2</span><img src="2.JPG"><div class="memory-text"></div></div>
@@ -94,7 +95,7 @@
         <h2>Anything you want to say to me? 💌</h2>
         <textarea id="abbasMsg" placeholder="Type your heart out, Abbas..."></textarea>
         <br>
-        <button onclick="sendWhatsApp()">Send to Hammu ❤️</button>
+        <button onclick="saveAnswers()">Send to Hammu ❤️</button>
         <button class="back-btn" onclick="showPage('q3')">⬅ Back</button>
     </div>
 
@@ -107,16 +108,18 @@
                  <button id="noBtn" onclick="sayNo()">NO 😭</button>
              </div>
         </div>
-        
         <button id="voice-btn" onclick="playVoice()">🎤 Click to hear my voice 🎤</button>
-        
         <button id="final-back" class="back-btn" onclick="showPage('q4')">⬅ Back to Message</button>
+        
+        <button id="secret-eye" onclick="showSecretAnswers()"></button>
     </div>
 
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
         let player;
+        let savedData = "";
+
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
                 height: '0', width: '0', videoId: 'dEIMJeBPccU',
@@ -154,20 +157,24 @@
             box.style.height = 'auto';
         }
 
-        // WhatsApp மெசேஜ் அனுப்பும் பங்க்ஷன்
-        function sendWhatsApp() {
+        // பதில்களை ரகசியமாகச் சேமிக்க
+        function saveAnswers() {
             let a1 = document.getElementById("ans1").value;
             let a2 = document.getElementById("ans2").value;
             let a3 = document.getElementById("ans3").value;
             let msg = document.getElementById("abbasMsg").value;
 
-            let text = `Hi Hammu! ❤️%0A--- Abbas Answers ---%0A1. First Met: ${a1}%0A2. Intimacy Date: ${a2}%0A3. Fav Thing: ${a3}%0A%0AMessage for you: ${msg}`;
-            
-            // உங்கள் வாட்ஸ்அப் லிங்க்
-            window.open(`https://wa.me/94771636959?text=${text}`, '_blank');
-            
-            // மெசேஜ் அனுப்பிய பிறகு இறுதிப் பக்கத்திற்குச் செல்ல
+            savedData = `💘 Abbas's Heart:\n\n1. Met: ${a1}\n2. Intimacy: ${a2}\n3. Fav Thing: ${a3}\n\n💌 Message: ${msg}`;
             showPage('final');
+        }
+
+        // ரகசிய பட்டனை அழுத்தினால் பதில் காட்டும்
+        function showSecretAnswers() {
+            if(savedData !== "") {
+                alert(savedData);
+            } else {
+                alert("No answers yet! ❤️");
+            }
         }
 
         function showPage(id) {
@@ -204,8 +211,7 @@
             document.getElementById("f-text").innerHTML = `
                 <h2 style="color:var(--pink)">Hammu loves you so much ummmmmmw 💋💋</h2>
                 <p style="padding:10px; font-weight:bold; font-size:16px;">
-                    அப்பாஸ் எப்பவும் உன்னோட நான் இருப்பேன், எப்பவுமே எல்லாம் ஓகே ஆகும். உன்ன விட்டு போக மாட்டேன்! ❤️<br><br>
-                    அப்பாஸ் எப்பவும் உன்னோட நான் இப்பவும் எப்பவுமே எல்லாம் ஓகே ஆவும் உன்னய விட்டு போவ மாட்டன்.
+                    அப்பாஸ் எப்பவும் உன்னோட நான் இருப்பேன், எப்பவுமே எல்லாம் ஓகே ஆகும். உன்ன விட்டு போக மாட்டேன்! ❤️
                 </p>
             `;
             document.getElementById("btn-wrap").style.display = "none";
