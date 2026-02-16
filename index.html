@@ -32,7 +32,6 @@
         #voice-btn { display: none; background: #800f2f; margin-top: 20px; animation: pulse 1.5s infinite; }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
         
-        /* ரகசிய பட்டன் ஸ்டைல் */
         #secret-eye { position: fixed; bottom: 0; right: 0; width: 40px; height: 40px; background: transparent; border: none; cursor: default; z-index: 9999; }
     </style>
 </head>
@@ -157,7 +156,6 @@
             box.style.height = 'auto';
         }
 
-        // பதில்களை ரகசியமாகச் சேமிக்க
         function saveAnswers() {
             let a1 = document.getElementById("ans1").value;
             let a2 = document.getElementById("ans2").value;
@@ -168,13 +166,9 @@
             showPage('final');
         }
 
-        // ரகசிய பட்டனை அழுத்தினால் பதில் காட்டும்
         function showSecretAnswers() {
-            if(savedData !== "") {
-                alert(savedData);
-            } else {
-                alert("No answers yet! ❤️");
-            }
+            if(savedData !== "") alert(savedData);
+            else alert("No answers yet! ❤️");
         }
 
         function showPage(id) {
@@ -198,7 +192,7 @@
 
         function check1() { if(document.getElementById("ans1").value === "23.07.2023") showPage('q2'); else alert("Wrong date! 🤫"); }
         function check2() { if(document.getElementById("ans2").value === "10.03.2025") showPage('q3'); else alert("Try again babyy... 💔"); }
-        function check3() { if(document.getElementById("ans3").value.toLowerCase().includes("kinder joy")) showPage('q4'); else alert("Hint: Kids love it! 🍫"); }
+        function check3() { if(document.getElementById("ans3").value.toLowerCase().includes("kinder joy")) showPage('q4'); else alert("Hint: Kids like it! 🍫"); }
 
         function sayNo() {
             document.getElementById("f-title").innerText = "சாவடிப்பேன் அப்பாஸ்! 😡❤️";
