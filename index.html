@@ -94,7 +94,7 @@
         <h2>Anything you want to say to me? 💌</h2>
         <textarea id="abbasMsg" placeholder="Type your heart out, Abbas..."></textarea>
         <br>
-        <button onclick="showPage('final')">Send to Hammu ❤️</button>
+        <button onclick="sendWhatsApp()">Send to Hammu ❤️</button>
         <button class="back-btn" onclick="showPage('q3')">⬅ Back</button>
     </div>
 
@@ -152,6 +152,22 @@
             box.querySelector('.memory-text').innerText = text;
             box.querySelector('.memory-text').style.display = 'block';
             box.style.height = 'auto';
+        }
+
+        // WhatsApp மெசேஜ் அனுப்பும் பங்க்ஷன்
+        function sendWhatsApp() {
+            let a1 = document.getElementById("ans1").value;
+            let a2 = document.getElementById("ans2").value;
+            let a3 = document.getElementById("ans3").value;
+            let msg = document.getElementById("abbasMsg").value;
+
+            let text = `Hi Hammu! ❤️%0A--- Abbas Answers ---%0A1. First Met: ${a1}%0A2. Intimacy Date: ${a2}%0A3. Fav Thing: ${a3}%0A%0AMessage for you: ${msg}`;
+            
+            // உங்கள் வாட்ஸ்அப் லிங்க்
+            window.open(`https://wa.me/94771636959?text=${text}`, '_blank');
+            
+            // மெசேஜ் அனுப்பிய பிறகு இறுதிப் பக்கத்திற்குச் செல்ல
+            showPage('final');
         }
 
         function showPage(id) {
