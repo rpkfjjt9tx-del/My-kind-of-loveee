@@ -58,10 +58,10 @@
 
         <div class="grid">
             <div class="memory-box" onclick="reveal(this, 'The day my heart chose you. ❤️')"><span>1</span><img src="1.JPG"><div class="memory-text"></div></div>
-            <div class="memory-box" onclick="reveal(this, 'Our beautiful first date. ✨')"><span>2</span><img src="2.PNG"><div class="memory-text"></div></div>
-            <div class="memory-box" onclick="reveal(this, 'My favorite smile in the world. 💚')"><span>3</span><img src="3.PNG"><div class="memory-text"></div></div>
+            <div class="memory-box" onclick="reveal(this, 'Our beautiful first date. ✨')"><span>2</span><img src="2.JPG"><div class="memory-text"></div></div>
+            <div class="memory-box" onclick="reveal(this, 'My favorite smile in the world. 💚')"><span>3</span><img src="3.JPG"><div class="memory-text"></div></div>
             <div class="memory-box" onclick="reveal(this, 'You are my peace and my home.')"><span>4</span><img src="4.JPG"><div class="memory-text"></div></div>
-            <div class="memory-box" onclick="reveal(this, 'Almost 3 years of making memories.')"><span>5</span><img src="5.PNG"><div class="memory-text"></div></div>
+            <div class="memory-box" onclick="reveal(this, 'Almost 3 years of making memories.')"><span>5</span><img src="5.JPG"><div class="memory-text"></div></div>
             <div class="memory-box" onclick="reveal(this, 'Click continue... I have a question. 💌')"><span>6</span><img src="6.JPG"><div class="memory-text"></div></div>
         </div>
         <button onclick="showPage('q1')" style="width: 85%;">Let's Play a Game ➡️</button>
@@ -159,7 +159,6 @@
             document.querySelectorAll(".page").forEach(p => p.style.display = "none");
             document.getElementById(id).style.display = "flex";
             
-            // Re-show buttons and reset text if user comes back to final page
             if(id === 'final') {
                 document.getElementById("btn-wrap").style.display = "block";
                 document.getElementById("voice-btn").style.display = "none";
@@ -176,7 +175,7 @@
 
         function check1() { if(document.getElementById("ans1").value === "23.07.2023") showPage('q2'); else alert("Wrong date! 🤫"); }
         function check2() { if(document.getElementById("ans2").value === "10.03.2025") showPage('q3'); else alert("Try again babyy... 💔"); }
-        function check3() { if(document.getElementById("ans3").value.toLowerCase().includes("kinder joy")) showPage('q4'); else alert("Hint: Kids like it! 🍫"); }
+        function check3() { if(document.getElementById("ans3").value.toLowerCase().includes("kinder joy")) showPage('q4'); else alert("Hint: Kids love it! 🍫"); }
 
         function sayNo() {
             document.getElementById("f-title").innerText = "சாவடிப்பேன் அப்பாஸ்! 😡❤️";
